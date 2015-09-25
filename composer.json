@@ -1,0 +1,14 @@
+{
+    "name" : "majora/guzzle-routing-manager",
+    "licence" : "MIT",
+    "type" : "library",
+    "autoload": {
+      "psr-4": {
+        "Majora\\GuzzleRoutingManager\\" : "src/"
+      }
+    },
+  "require": {
+        "guzzlehttp/guzzle": "~6.0",
+        "symfony/routing": "^2.7"
+    }
+}
