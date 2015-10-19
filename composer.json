@@ -9,6 +9,7 @@
     },
   "require": {
         "guzzlehttp/guzzle": "~6.0",
-        "symfony/routing": "^2.7"
+        "symfony/routing": "^2.7",
+        "phpunit/phpunit": "5.0.*"
     }
 }

@@ -25,7 +25,7 @@ class RouteCollectionBuilder
                 $this->generateFromToken($routeConfig['hosttokens'])
             );
 
-            $routeCollection[] = $route;
+            $routeCollection->add($routeName, $route);
         }
 
         return $routeCollection;
