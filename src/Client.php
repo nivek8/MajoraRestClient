@@ -1,8 +1,11 @@
 <?php
 
-namespace Majora\GuzzleRoutingManager;
+namespace Majora\RestClient;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\ClientInterface;
+use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouteCollection;
 
 class Client
 {
@@ -32,7 +35,6 @@ class Client
     private $routeCollection;
 
     /**
-     * @param ClientInterface $guzzle
      * @param string $routingUrl
      * @param string $routingMethod
      */
@@ -60,8 +62,7 @@ class Client
     }
 
     /**
-     * @param $routeName
-     * @return \Symfony\Component\Routing\RouteCollection
+     * @return RouteCollection
      */
     private function init()
     {

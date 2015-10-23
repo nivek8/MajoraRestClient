@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\GuzzleRoutingManager\Tests;
+namespace Majora\RestClient\Tests;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -8,6 +8,4 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
 
     }
-
-    private function mock
 }

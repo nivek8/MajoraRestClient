@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8852d5216a0376f37ccaf47384a08425",
-    "content-hash": "4e03496dc8d91b9f9c5982fc1ac7cb43",
+    "hash": "476e7e3bde29651c8774ec550d19eaed",
+    "content-hash": "7ff1a3a37480f14c3528e5990ebd460c",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -356,16 +356,16 @@
         },
         {
             "name": "fabpot/php-cs-fixer",
-            "version": "dev-master",
+            "version": "v1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "03a4316be7956507763a7ff36ae14a26cba1b918"
+                "reference": "e8b3c4e41dc1484210fdc45363c41af6c2d56f20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/03a4316be7956507763a7ff36ae14a26cba1b918",
-                "reference": "03a4316be7956507763a7ff36ae14a26cba1b918",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/e8b3c4e41dc1484210fdc45363c41af6c2d56f20",
+                "reference": "e8b3c4e41dc1484210fdc45363c41af6c2d56f20",
                 "shasum": ""
             },
             "require": {
@@ -386,11 +386,6 @@
                 "php-cs-fixer"
             ],
             "type": "application",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\CS\\": "Symfony/CS/"
@@ -411,7 +406,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2015-10-15 20:08:30"
+            "time": "2015-10-21 19:19:43"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1624,11 +1619,11 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "fabpot/php-cs-fixer": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.4"
+    },
     "platform-dev": []
 }

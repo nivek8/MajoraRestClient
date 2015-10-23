@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\GuzzleRoutingManager;
+namespace Majora\RestClient;
 
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;

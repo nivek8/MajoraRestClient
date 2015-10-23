@@ -1,18 +1,20 @@
 {
-    "name" : "majora/guzzle-routing-manager",
-    "licence" : "MIT",
+    "name" : "majora/rest-client",
+    "description": "REST client based on FOSJsRoutingBundle routes",
+    "license": "MIT",
     "type" : "library",
     "autoload": {
-      "psr-4": {
-        "Majora\\GuzzleRoutingManager\\" : "src/"
-      }
+        "psr-4": {
+            "Majora\\RestClient\\" : "src/"
+        }
     },
-  "require": {
+    "require": {
+        "php": ">=5.4",
         "guzzlehttp/guzzle": "~6.0",
         "symfony/routing": "^2.7"
     },
-  "require-dev": {
-    "phpunit/phpunit": "^4.6",
-    "fabpot/php-cs-fixer": "dev-master"
-  }
+    "require-dev": {
+        "phpunit/phpunit": "^4.6",
+        "fabpot/php-cs-fixer": "^1.10.2"
+    }
 }
