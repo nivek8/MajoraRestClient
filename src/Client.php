@@ -54,6 +54,8 @@ class Client
         if (!in_array($method, $route->getMethods())) {
             //@todo throw exception
         }
+
+
     }
 
     /**
