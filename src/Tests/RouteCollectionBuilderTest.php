@@ -3,6 +3,7 @@
 namespace Majora\RestClient\Tests;
 
 use Majora\RestClient\RouteCollectionBuilder;
+use Majora\RestClient\Tests\Mock\MockGuzzleClient;
 
 class RouteCollectionBuilderTest extends \PHPUnit_Framework_Testcase
 {
@@ -22,7 +23,7 @@ class RouteCollectionBuilderTest extends \PHPUnit_Framework_Testcase
     public function setUp()
     {
         $this->routeCollectionBuilder = new RouteCollectionBuilder();
-        $this->config = $this->initConig();
+        $this->config = MockGuzzleClient::initConfig();
     }
 
     /**
@@ -34,26 +35,5 @@ class RouteCollectionBuilderTest extends \PHPUnit_Framework_Testcase
 
         $this->assertInstanceOf('Symfony\Component\Routing\RouteCollection', $routeCollection);
         $this->assertInstanceOf('Symfony\Component\Routing\Route', $routeCollection->get(key($this->config)));
-    }
-
-    /**
-     * Init default value to test RouteCollectionValue
-     * @return array
-     */
-    private function initConig()
-    {
-        return array(
-            'test_routing' => array(
-                'tokens' => array(
-                    array("variable", "/", "[^/]++","id"),
-                    array("text", "/api/partners"),
-                ),
-                'defaults' => array(),
-                'requirements' => array('_method' => "PUT"),
-                'hosttokens' => array(
-                  array("text", "api.sir.dev"),
-                ),
-            ),
-        );
     }
 }
