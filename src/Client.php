@@ -2,7 +2,7 @@
 
 namespace Majora\RestClient;
 
-use Majora\GuzzleRoutingManager\RouteConfigFetcherInterface;
+use Majora\RestClient\RouteConfigFetcherInterface;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Route;
@@ -36,8 +36,6 @@ class Client
     {
         $this->routeConfigFetcher = $routeConfigFetcher;
         $this->routeCollectionBuilder = $routeCollectionBuilder;
-
-        $this->init();
     }
 
     /**
@@ -54,16 +52,15 @@ class Client
         if (!in_array($method, $route->getMethods())) {
             //@todo throw exception
         }
-
-
     }
 
     /**
+     * load route collection
      * @return void
      */
-    private function init()
+    private function call($url)
     {
-        $routeConfig = $this->routeConfigFetcher->fetch();
+        $routeConfig = $this->routeConfigFetcher->fetch($url);
         $this->routeCollection = $this->routeCollectionBuilder->build($routeConfig);
     }
 }

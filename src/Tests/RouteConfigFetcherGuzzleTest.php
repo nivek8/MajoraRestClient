@@ -17,11 +17,18 @@ class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
     private $responseContent;
 
     /**
+     * @var string
+     */
+    private $routingUrl;
+
+    /**
      * setUp
      */
     public function setUp()
     {
         $this->responseContent = MockGuzzleClient::initGuzzleResponse();
+        $this->routingUrl = 'http://false_url.json';
+
     }
 
     /**
@@ -29,8 +36,8 @@ class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
      */
     public function testFetch()
     {
-        $routeConfigFetcherGuzzle= $this->initRouteConfigFetcherGuzzle();
-        $response = $routeConfigFetcherGuzzle->fetch();
+        $routeConfigFetcherGuzzle= new RouteConfigFetcherGuzzle($this->mockGuzzleClient());
+        $response = $routeConfigFetcherGuzzle->fetch($this->routingUrl);
 
         $this->assertSame(
             MockGuzzleClient::initConfig(),
@@ -44,25 +51,14 @@ class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
     public function testFetchFailureNoRoute()
     {
         $this->responseContent = array();
-        $routeConfigFetcherGuzzle= $this->initRouteConfigFetcherGuzzle();
+        $routeConfigFetcherGuzzle= new RouteConfigFetcherGuzzle($this->mockGuzzleClient());
 
         $this->setExpectedException(
             '\Majora\RestClient\Exceptions\InvalidRouteConfigException',
             'key "routes" not found'
         );
 
-        $routeConfigFetcherGuzzle->fetch();
-    }
-
-    /**
-     * init routeConfigFetcherGuzzle
-     */
-    private function initRouteConfigFetcherGuzzle()
-    {
-        return new RouteConfigFetcherGuzzle(
-            $this->mockGuzzleClient(),
-            'http://false_url.json'
-        );
+        $routeConfigFetcherGuzzle->fetch($this->routingUrl);
     }
 
     /**

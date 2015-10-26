@@ -5,7 +5,9 @@ namespace Majora\RestClient;
 interface RouteConfigFetcherInterface
 {
     /**
-     * @return array
+     * @param $routingUrl
+     * @param string $routingMethod
+     * @return mixed
      */
-    public function fetch();
+    public function fetch($routingUrl, $routingMethod = 'GET');
 }

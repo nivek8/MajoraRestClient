@@ -13,25 +13,13 @@ class RouteConfigFetcherGuzzle implements RouteConfigFetcherInterface
     private $guzzleClient;
 
     /**
-     * @var string
-     */
-    private $routingUrl;
-
-    /**
-     * @var string
-     */
-    private $routingMethod;
-
-    /**
      * @param ClientInterface $guzzleClient
      * @param string $routingUrl
      * @param string $routingMethod
      */
-    public function __construct(ClientInterface $guzzleClient, $routingUrl, $routingMethod = 'GET')
+    public function __construct(ClientInterface $guzzleClient)
     {
         $this->guzzleClient = $guzzleClient;
-        $this->routingUrl = $routingUrl;
-        $this->routingMethod = $routingMethod;
     }
 
     /**
@@ -40,9 +28,9 @@ class RouteConfigFetcherGuzzle implements RouteConfigFetcherInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Majora\RestClient\Exceptions\InvalidRouteConfigException
      */
-    public function fetch()
+    public function fetch($routingUrl, $routingMethod = 'GET')
     {
-        $guzzleResponse = $this->guzzleClient->request($this->routingMethod, $this->routingUrl);
+        $guzzleResponse = $this->guzzleClient->request($routingMethod, $routingUrl);
         $convertJsonResponse = json_decode($guzzleResponse->getBody(), true);
 
         if (!isset($convertJsonResponse['routes'])) {

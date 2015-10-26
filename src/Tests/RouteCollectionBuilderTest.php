@@ -32,7 +32,6 @@ class RouteCollectionBuilderTest extends \PHPUnit_Framework_Testcase
     public function testBuild()
     {
         $routeCollection = $this->routeCollectionBuilder->build($this->config);
-
         $this->assertInstanceOf('Symfony\Component\Routing\RouteCollection', $routeCollection);
         $this->assertInstanceOf('Symfony\Component\Routing\Route', $routeCollection->get(key($this->config)));
     }
