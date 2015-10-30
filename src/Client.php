@@ -2,10 +2,11 @@
 
 namespace Majora\RestClient;
 
-use Majora\RestClient\RouteConfigFetcherInterface;
+use GuzzleHttp\ClientInterface;
+use Majora\RestClient\Exceptions\InvalidClientRouteCollectionException;
+use Majora\RestClient\Exceptions\InvalidMethodRequestException;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\RequestContext;
-use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
 class Client
@@ -21,46 +22,64 @@ class Client
     private $routeConfigFetcher;
 
     /**
+     * @var ClientInterface
+     */
+    private $guzzleClient;
+
+    /**
      * @var RouteCollection
      */
     private $routeCollection;
 
     /**
-     * @param RouteConfigFetcherInterface $routeConfigFetcher
-     * @param RouteCollectionBuilder $routeCollectionBuilder
+     * @param RouteConfigFetcherInterface   $routeConfigFetcher
+     * @param RouteCollectionBuilder        $routeCollectionBuilder
+     * @param ClientInterface               $guzzleClient
      */
     public function __construct(
         RouteConfigFetcherInterface $routeConfigFetcher,
-        RouteCollectionBuilder $routeCollectionBuilder
+        RouteCollectionBuilder $routeCollectionBuilder,
+        ClientInterface $guzzleClient
     )
     {
         $this->routeConfigFetcher = $routeConfigFetcher;
         $this->routeCollectionBuilder = $routeCollectionBuilder;
+        $this->guzzleClient = $guzzleClient;
     }
 
     /**
-     * @param $routeName
-     * @return Route
+     * @param string    $method
+     * @param string    $routeName
+     * @param array     $parameters
      */
-    public function request($method, $routeName, $parameters)
+    public function request($method, $routeName, $parameters = array())
     {
+        if (null === $this->routeCollection){
+            throw new InvalidClientRouteCollectionException;
+        }
+
         $urlGenerator = new UrlGenerator($this->routeCollection, new RequestContext());
-        $url = $urlGenerator->generate($routeName, $parameters);
+        $url = $urlGenerator->generate($routeName, $parameters, true);
 
         $route = $this->routeCollection->get($routeName);
 
         if (!in_array($method, $route->getMethods())) {
-            //@todo throw exception
+            throw new InvalidMethodRequestException;
         }
+
+        $response = $this->guzzleClient->request($method, $url)->getBody()->getContents();
+        return $response;
     }
 
     /**
-     * load route collection
-     * @return void
+     * @param string    $url
+     * @return self     $this
      */
-    private function call($url)
+    public function call($url)
     {
         $routeConfig = $this->routeConfigFetcher->fetch($url);
         $this->routeCollection = $this->routeCollectionBuilder->build($routeConfig);
+
+        return $this;
     }
 }

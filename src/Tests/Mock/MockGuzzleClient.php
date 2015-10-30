@@ -2,6 +2,9 @@
 
 namespace Majora\RestClient\Tests\Mock;
 
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Stream;
+
 abstract class MockGuzzleClient
 {
     /**
@@ -17,7 +20,7 @@ abstract class MockGuzzleClient
                     array("text", "/api/partners"),
                 ),
                 'defaults' => array(),
-                'requirements' => array('_method' => "PUT"),
+                'requirements' => array('_method' => "GET"),
                 'hosttokens' => array(
                     array("text", "api.sir.dev"),
                 ),
@@ -26,7 +29,7 @@ abstract class MockGuzzleClient
     }
 
     /**
-     * Init
+     * Init default guzzle response
      * @return array
      */
     static public function initGuzzleResponse()
@@ -38,5 +41,20 @@ abstract class MockGuzzleClient
             "host" => "base.url.dev",
             "scheme" => "http",
         );
+    }
+
+    /**
+     * init default rest response
+     * @return string
+     */
+    static public function initGuzzleRestResponse()
+    {
+        $handle = fopen('php://temp', 'w+');
+        fwrite($handle, json_encode(self::initConfig()));
+        $stream = new Stream($handle);
+
+        $response = new Response('200', array(), $stream);
+
+        return $response;
     }
 }
