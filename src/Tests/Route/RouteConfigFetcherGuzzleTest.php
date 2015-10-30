@@ -6,8 +6,7 @@ use Majora\RestClient\Route\RouteConfigFetcherGuzzle;
 use Majora\RestClient\Tests\Mock\MockGuzzleClient;
 
 /**
- * Class RouteConfigFetcherGuzzleTest
- * @package Majora\RestClient\Tests
+ * Class RouteConfigFetcherGuzzleTest.
  */
 class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,21 +21,20 @@ class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
     private $routingUrl;
 
     /**
-     * setUp
+     * setUp.
      */
     public function setUp()
     {
         $this->responseContent = MockGuzzleClient::initGuzzleResponse();
         $this->routingUrl = 'http://false_url.json';
-
     }
 
     /**
-     * test fetch method
+     * test fetch method.
      */
     public function testFetch()
     {
-        $routeConfigFetcherGuzzle= new RouteConfigFetcherGuzzle($this->mockGuzzleClient());
+        $routeConfigFetcherGuzzle = new RouteConfigFetcherGuzzle($this->mockGuzzleClient());
         $response = $routeConfigFetcherGuzzle->fetch($this->routingUrl);
 
         $this->assertSame(
@@ -46,12 +44,12 @@ class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test fetch method Exception "no route"
+     * test fetch method Exception "no route".
      */
     public function testFetchFailureNoRoute()
     {
         $this->responseContent = array();
-        $routeConfigFetcherGuzzle= new RouteConfigFetcherGuzzle($this->mockGuzzleClient());
+        $routeConfigFetcherGuzzle = new RouteConfigFetcherGuzzle($this->mockGuzzleClient());
 
         $this->setExpectedException(
             '\Majora\RestClient\Exceptions\InvalidRouteConfigException',
@@ -62,7 +60,8 @@ class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Mock guzzle client
+     * Mock guzzle client.
+     *
      * @return \PHPUnit_Framework_MockObject_MockObject
      */
     private function mockGuzzleClient()
@@ -78,7 +77,8 @@ class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Mock guzzle Response
+     * Mock guzzle Response.
+     *
      * @return \PHPUnit_Framework_MockObject_MockObject
      */
     private function mockGuzzleResponse()

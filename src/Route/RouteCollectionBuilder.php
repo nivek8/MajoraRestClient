@@ -9,14 +9,14 @@ class RouteCollectionBuilder
 {
     /**
      * @param array $config
+     *
      * @return RouteCollection
      */
     public function build(array $config)
     {
         $routeCollection = new RouteCollection();
 
-        foreach($config as $routeName => $routeConfig)
-        {
+        foreach ($config as $routeName => $routeConfig) {
             $route = new Route(
                 $this->generateFromToken($routeConfig['tokens']),
                 $routeConfig['defaults'],
@@ -33,15 +33,15 @@ class RouteCollectionBuilder
 
     /**
      * @param array $tokens
+     *
      * @return string
      */
     private function generateFromToken(array $tokens)
     {
         $path = '';
 
-        foreach($tokens as $token)
-        {
-            if ('variable' === $token[0]){
+        foreach ($tokens as $token) {
+            if ('variable' === $token[0]) {
                 $path = $token[1].'{'.$token[3].'}'.$path;
                 continue;
             }

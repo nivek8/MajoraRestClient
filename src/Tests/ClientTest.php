@@ -7,8 +7,7 @@ use Majora\RestClient\Tests\Mock\MockGuzzleClient;
 use Majora\RestClient\Tests\Mock\MockRouteCollection;
 
 /**
- * Class ClientTest
- * @package Majora\RestClient\Tests
+ * Class ClientTest.
  */
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,12 +17,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     private $client;
 
     /**
-     * setUp
+     * setUp.
      */
     public function setUp()
     {
-
-       $this->client = new Client(
+        $this->client = new Client(
            $this->mockRouteConfigFetcherGuzzle(),
            $this->mockRouteCollectionBuilder(),
            $this->mockGuzzleClient()
@@ -31,7 +29,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test call method
+     * test call method.
      */
     public function testCall()
     {
@@ -47,7 +45,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test request method
+     * test request method.
      */
     public function testRequest()
     {
@@ -56,7 +54,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test request method failure when routeCollection is null
+     * test request method failure when routeCollection is null.
      */
     public function testRequestFailureNoRouteCollectionLoaded()
     {
@@ -65,7 +63,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test request method failure when request method is not allowed
+     * test request method failure when request method is not allowed.
      */
     public function testRequestFailureMethodNotAllowed()
     {

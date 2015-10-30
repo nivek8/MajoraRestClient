@@ -34,30 +34,29 @@ class Client
     private $routeCollection;
 
     /**
-     * @param RouteConfigFetcherInterface   $routeConfigFetcher
-     * @param RouteCollectionBuilder        $routeCollectionBuilder
-     * @param ClientInterface               $guzzleClient
+     * @param RouteConfigFetcherInterface $routeConfigFetcher
+     * @param RouteCollectionBuilder      $routeCollectionBuilder
+     * @param ClientInterface             $guzzleClient
      */
     public function __construct(
         RouteConfigFetcherInterface $routeConfigFetcher,
         RouteCollectionBuilder $routeCollectionBuilder,
         ClientInterface $guzzleClient
-    )
-    {
+    ) {
         $this->routeConfigFetcher = $routeConfigFetcher;
         $this->routeCollectionBuilder = $routeCollectionBuilder;
         $this->guzzleClient = $guzzleClient;
     }
 
     /**
-     * @param string    $method
-     * @param string    $routeName
-     * @param array     $parameters
+     * @param string $method
+     * @param string $routeName
+     * @param array  $parameters
      */
     public function request($method, $routeName, $parameters = array())
     {
-        if (null === $this->routeCollection){
-            throw new InvalidClientRouteCollectionException;
+        if (null === $this->routeCollection) {
+            throw new InvalidClientRouteCollectionException();
         }
 
         $urlGenerator = new UrlGenerator($this->routeCollection, new RequestContext());
@@ -66,16 +65,18 @@ class Client
         $route = $this->routeCollection->get($routeName);
 
         if (!in_array($method, $route->getMethods())) {
-            throw new InvalidMethodRequestException;
+            throw new InvalidMethodRequestException();
         }
 
         $response = $this->guzzleClient->request($method, $url)->getBody()->getContents();
+
         return $response;
     }
 
     /**
-     * @param string    $url
-     * @return self     $this
+     * @param string $url
+     *
+     * @return self $this
      */
     public function call($url)
     {

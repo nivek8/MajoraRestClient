@@ -14,6 +14,7 @@ abstract class MockRouteCollection
         $route->setMethods('GET');
 
         $routeCollection->add('my_route_name', $route);
+
         return $routeCollection;
     }
 }

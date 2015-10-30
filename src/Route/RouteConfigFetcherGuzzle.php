@@ -14,8 +14,8 @@ class RouteConfigFetcherGuzzle implements RouteConfigFetcherInterface
 
     /**
      * @param ClientInterface $guzzleClient
-     * @param string $routingUrl
-     * @param string $routingMethod
+     * @param string          $routingUrl
+     * @param string          $routingMethod
      */
     public function __construct(ClientInterface $guzzleClient)
     {
