@@ -1,8 +1,8 @@
 <?php
 
-namespace Majora\RestClient\Tests;
+namespace Majora\RestClient\Tests\Route;
 
-use Majora\RestClient\RouteCollectionBuilder;
+use Majora\RestClient\Route\RouteCollectionBuilder;
 use Majora\RestClient\Tests\Mock\MockGuzzleClient;
 
 class RouteCollectionBuilderTest extends \PHPUnit_Framework_Testcase

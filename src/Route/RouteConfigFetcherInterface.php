@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\RestClient;
+namespace Majora\RestClient\Route;
 
 interface RouteConfigFetcherInterface
 {

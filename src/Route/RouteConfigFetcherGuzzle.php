@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\RestClient;
+namespace Majora\RestClient\Route;
 
 use GuzzleHttp\ClientInterface;
 use Majora\RestClient\Exceptions\InvalidRouteConfigException;

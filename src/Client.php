@@ -8,6 +8,8 @@ use Majora\RestClient\Exceptions\InvalidMethodRequestException;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
+use Majora\RestClient\Route\RouteConfigFetcherInterface;
+use Majora\RestClient\Route\RouteCollectionBuilder;
 
 class Client
 {

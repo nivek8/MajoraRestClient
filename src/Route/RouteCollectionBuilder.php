@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\RestClient;
+namespace Majora\RestClient\Route;
 
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;

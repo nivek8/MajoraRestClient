@@ -1,8 +1,8 @@
 <?php
 
-namespace Majora\RestClient\Tests;
+namespace Majora\RestClient\Tests\Route;
 
-use Majora\RestClient\RouteConfigFetcherGuzzle;
+use Majora\RestClient\Route\RouteConfigFetcherGuzzle;
 use Majora\RestClient\Tests\Mock\MockGuzzleClient;
 
 /**

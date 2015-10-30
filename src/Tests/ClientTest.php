@@ -78,7 +78,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     private function mockRouteConfigFetcherGuzzle()
     {
-        $mockRouteConfigFetcherGuzzle = $this->getMockBuilder('Majora\RestClient\RouteConfigFetcherInterface')
+        $mockRouteConfigFetcherGuzzle = $this->getMockBuilder('Majora\RestClient\Route\RouteConfigFetcherInterface')
             ->enableOriginalConstructor()
             ->getMock();
 
@@ -93,7 +93,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     private function mockRouteCollectionBuilder()
     {
-        $mockCollectionBuilder = $this->getMockBuilder('Majora\RestClient\RouteCollectionBuilder')
+        $mockCollectionBuilder = $this->getMockBuilder('Majora\RestClient\Route\RouteCollectionBuilder')
             ->enableOriginalConstructor()
             ->getMock();
 
