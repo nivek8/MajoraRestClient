@@ -54,8 +54,9 @@ abstract class MockGuzzleClient
     {
         $handle = fopen('php://temp', 'w+');
         fwrite($handle, json_encode(self::initConfig()));
-        $stream = new Stream($handle);
+        rewind($handle);
 
+        $stream = new Stream($handle);
         $response = new Response('200', array(), $stream);
 
         return $response;
