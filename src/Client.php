@@ -98,6 +98,50 @@ class Client
     }
 
     /**
+     * @param $routeName
+     * @param array $parameters
+     *
+     * @return json
+     */
+    public function put($routeName, $parameters = array())
+    {
+        return $this->request('PUT', $routeName, $parameters);
+    }
+
+    /**
+     * @param $routeName
+     * @param array $parameters
+     *
+     * @return json
+     */
+    public function delete($routeName, $parameters = array())
+    {
+        return $this->request('DELETE', $routeName, $parameters);
+    }
+
+    /**
+     * @param $routeName
+     * @param array $parameters
+     *
+     * @return json
+     */
+    public function patch($routeName, $parameters = array())
+    {
+        return $this->request('PATCH', $routeName, $parameters);
+    }
+
+    /**
+     * @param $routeName
+     * @param array $parameters
+     *
+     * @return json
+     */
+    public function head($routeName, $parameters = array())
+    {
+        return $this->request('HEAD', $routeName, $parameters);
+    }
+
+    /**
      * @param string $url
      *
      * @return self $this

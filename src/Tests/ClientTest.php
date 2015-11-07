@@ -55,6 +55,10 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             array('GET', 'my_route_cget', array()),
             array('GET', 'my_route_get', array('id' => 1)),
             array('POST', 'my_route_post', array()),
+            array('PUT', 'my_route_put', array('id' => 1)),
+            array('DELETE', 'my_route_delete', array('id' => 1)),
+            array('PATCH', 'my_route_patch', array('id' => 1)),
+            array('HEAD', 'my_route_head', array('id' => 1)),
         );
     }
 
@@ -95,8 +99,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->client->call('http://false.json')->request('GET', 'false_route_name');
     }
 
-    //TODO essayer route qui n'existe pas
-
     /**
      * test request method failure when routeCollection is null.
      */
@@ -124,9 +126,48 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertJson($response);
     }
 
+    /**
+     * test post method
+     */
     public function testPost()
     {
         $response = $this->client->call('http://false.json')->post('my_route_post');
+        $this->assertJson($response);
+    }
+
+    /**
+     * test put method
+     */
+    public function testPut()
+    {
+        $response = $this->client->call('http://false.json')->put('my_route_put', array('id' => 1));
+        $this->assertJson($response);
+    }
+
+    /**
+     * test delete method
+     */
+    public function testDelete()
+    {
+        $response = $this->client->call('http://false.json')->delete('my_route_delete', array('id' => 1));
+        $this->assertJson($response);
+    }
+
+    /**
+     * test patch method
+     */
+    public function testPatch()
+    {
+        $response = $this->client->call('http://false.json')->patch('my_route_patch', array('id' => 1));
+        $this->assertJson($response);
+    }
+
+    /**
+     * test head method
+     */
+    public function testHead()
+    {
+        $response = $this->client->call('http://false.json')->head('my_route_head', array('id' => 1));
         $this->assertJson($response);
     }
 

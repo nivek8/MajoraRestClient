@@ -39,6 +39,26 @@ abstract class MockRouteCollection
                 'name' => 'my_route_post',
                 'path' => '/my/route/post',
             ),
+            array(
+                'method' => 'PUT',
+                'name' => 'my_route_put',
+                'path' => '/my/route/put/{id}',
+            ),
+            array(
+                'method' => 'DELETE',
+                'name' => 'my_route_delete',
+                'path' => '/my/route/delete/{id}'
+            ),
+            array(
+                'method' => 'PATCH',
+                'name' => 'my_route_patch',
+                'path' => '/my/route/patch/{id}'
+            ),
+            array(
+                'method' => 'HEAD',
+                'name' => 'my_route_head',
+                'path' => '/my/route/head/{id}'
+            ),
         );
     }
 }
