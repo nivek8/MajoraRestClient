@@ -52,6 +52,7 @@ class Client
      * @param string $method
      * @param string $routeName
      * @param array  $parameters
+     * @return json
      */
     public function request($method, $routeName, $parameters = array())
     {
@@ -71,6 +72,26 @@ class Client
         $response = $this->guzzleClient->request($method, $url)->getBody()->getContents();
 
         return $response;
+    }
+
+    /**
+     * @param string $routeName
+     * @param array $parameters
+     * @return json
+     */
+    public function get($routeName, $parameters = array())
+    {
+        return $this->request('GET', $routeName, $parameters);
+    }
+
+    /**
+     * @param $routeName
+     * @param array $parameters
+     * @return json
+     */
+    public function post($routeName, $parameters = array())
+    {
+        return $this->request('POST', $routeName, $parameters);
     }
 
     /**

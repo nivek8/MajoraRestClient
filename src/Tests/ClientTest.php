@@ -45,13 +45,56 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test request method.
+     * data for testRequest method
+     *
+     * @return array
      */
-    public function testRequest()
+    public function requestDataProvider()
     {
-        $response = $this->client->call('http://false.json')->request('GET', 'my_route_name');
+        return array(
+            array('GET', 'my_route_cget', array()),
+            array('GET', 'my_route_get', array('id' => 1)),
+            array('POST', 'my_route_post', array()),
+        );
+    }
+
+    /**
+     * test request method.
+     * @dataProvider requestDataProvider
+     */
+    public function testRequest($method, $routeName, $param)
+    {
+        $response = $this->client->call('http://false.json')->request($method, $routeName, $param);
         $this->assertJson($response);
     }
+
+    /**
+     * test request method failure when a require parameter is missing.
+     */
+    public function testRequestFailureParamRequireMissing()
+    {
+        $this->setExpectedException(
+            'Symfony\Component\Routing\Exception\MissingMandatoryParametersException',
+            'Some mandatory parameters are missing ("id") to generate a URL for route "my_route_get".'
+        );
+
+        $this->client->call('http://false.json')->request('GET', 'my_route_get');
+    }
+
+    /**
+     * test request method failure when routeName does not exist
+     */
+    public function testRequestFailureRouteNameNotExist()
+    {
+        $this->setExpectedException(
+            'Symfony\Component\Routing\Exception\RouteNotFoundException',
+            'Unable to generate a URL for the named route "false_route_name" as such route does not exist.'
+        );
+
+        $this->client->call('http://false.json')->request('GET', 'false_route_name');
+    }
+
+    //TODO essayer route qui n'existe pas
 
     /**
      * test request method failure when routeCollection is null.
@@ -68,7 +111,22 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testRequestFailureMethodNotAllowed()
     {
         $this->setExpectedException('Majora\RestClient\Exceptions\InvalidMethodRequestException');
-        $this->client->call('http://false.json')->request('POST', 'my_route_name');
+        $this->client->call('http://false.json')->request('POST', 'my_route_cget');
+    }
+
+    /**
+     * test get method
+     */
+    public function testGet()
+    {
+        $response = $this->client->call('http://false.json')->get('my_route_cget');
+        $this->assertJson($response);
+    }
+
+    public function testPost()
+    {
+        $response = $this->client->call('http://false.json')->post('my_route_post');
+        $this->assertJson($response);
     }
 
     /**
@@ -101,6 +159,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         return $mockCollectionBuilder;
     }
 
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
     private function mockGuzzleClient()
     {
         $mockGuzzleClient = $this->getMockBuilder('GuzzleHttp\ClientInterface')

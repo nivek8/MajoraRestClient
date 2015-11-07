@@ -10,11 +10,35 @@ abstract class MockRouteCollection
     public static function initRouteCollection()
     {
         $routeCollection = new RouteCollection();
-        $route = new Route('/my/route/path');
-        $route->setMethods('GET');
 
-        $routeCollection->add('my_route_name', $route);
+        foreach (self::getRoutes() as $routeParam){
+            $route = new Route($routeParam['path']);
+            $route->setMethods($routeParam['method']);
+
+            $routeCollection->add($routeParam['name'], $route);
+        }
 
         return $routeCollection;
+    }
+
+    private function getRoutes()
+    {
+        return array(
+            array(
+                'method' => 'GET',
+                'name' => 'my_route_cget',
+                'path' => '/my/route/cget',
+            ),
+            array(
+                'method' => 'GET',
+                'name' => 'my_route_get',
+                'path' => '/my/route/get/{id}',
+            ),
+            array(
+                'method' => 'POST',
+                'name' => 'my_route_post',
+                'path' => '/my/route/post'
+            ),
+        );
     }
 }
