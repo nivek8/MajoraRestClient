@@ -11,7 +11,7 @@ abstract class MockRouteCollection
     {
         $routeCollection = new RouteCollection();
 
-        foreach (self::getRoutes() as $routeParam){
+        foreach (self::getRoutes() as $routeParam) {
             $route = new Route($routeParam['path']);
             $route->setMethods($routeParam['method']);
 
@@ -37,7 +37,7 @@ abstract class MockRouteCollection
             array(
                 'method' => 'POST',
                 'name' => 'my_route_post',
-                'path' => '/my/route/post'
+                'path' => '/my/route/post',
             ),
         );
     }

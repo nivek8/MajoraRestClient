@@ -45,7 +45,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * data for testRequest method
+     * data for testRequest method.
      *
      * @return array
      */
@@ -60,6 +60,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * test request method.
+     *
      * @dataProvider requestDataProvider
      */
     public function testRequest($method, $routeName, $param)
@@ -82,7 +83,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test request method failure when routeName does not exist
+     * test request method failure when routeName does not exist.
      */
     public function testRequestFailureRouteNameNotExist()
     {
@@ -115,7 +116,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test get method
+     * test get method.
      */
     public function testGet()
     {

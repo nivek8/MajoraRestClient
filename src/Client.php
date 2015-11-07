@@ -52,6 +52,7 @@ class Client
      * @param string $method
      * @param string $routeName
      * @param array  $parameters
+     *
      * @return json
      */
     public function request($method, $routeName, $parameters = array())
@@ -76,7 +77,8 @@ class Client
 
     /**
      * @param string $routeName
-     * @param array $parameters
+     * @param array  $parameters
+     *
      * @return json
      */
     public function get($routeName, $parameters = array())
@@ -87,6 +89,7 @@ class Client
     /**
      * @param $routeName
      * @param array $parameters
+     *
      * @return json
      */
     public function post($routeName, $parameters = array())
