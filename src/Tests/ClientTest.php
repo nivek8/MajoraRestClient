@@ -127,7 +127,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test post method
+     * test post method.
      */
     public function testPost()
     {
@@ -136,7 +136,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test put method
+     * test put method.
      */
     public function testPut()
     {
@@ -145,7 +145,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test delete method
+     * test delete method.
      */
     public function testDelete()
     {
@@ -154,7 +154,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test patch method
+     * test patch method.
      */
     public function testPatch()
     {
@@ -163,7 +163,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test head method
+     * test head method.
      */
     public function testHead()
     {
