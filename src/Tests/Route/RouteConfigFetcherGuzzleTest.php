@@ -21,7 +21,7 @@ class RouteConfigFetcherGuzzleTest extends \PHPUnit_Framework_TestCase
     private $routingUrl;
 
     /**
-     * setUp.
+     * @inheritDoc
      */
     public function setUp()
     {

@@ -1,0 +1,7 @@
+My\Namespace\Object\Path:
+    GET:
+        - my_object_get
+        - my_object_cget
+    POST: my_object_post
+    PUT: my_object_put
+    DELETE: my_object_delete

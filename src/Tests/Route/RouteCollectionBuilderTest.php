@@ -18,7 +18,7 @@ class RouteCollectionBuilderTest extends \PHPUnit_Framework_Testcase
     private $config;
 
     /**
-     * setUp.
+     * @inheritDoc
      */
     public function setUp()
     {

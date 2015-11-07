@@ -47,17 +47,17 @@ abstract class MockRouteCollection
             array(
                 'method' => 'DELETE',
                 'name' => 'my_route_delete',
-                'path' => '/my/route/delete/{id}'
+                'path' => '/my/route/delete/{id}',
             ),
             array(
                 'method' => 'PATCH',
                 'name' => 'my_route_patch',
-                'path' => '/my/route/patch/{id}'
+                'path' => '/my/route/patch/{id}',
             ),
             array(
                 'method' => 'HEAD',
                 'name' => 'my_route_head',
-                'path' => '/my/route/head/{id}'
+                'path' => '/my/route/head/{id}',
             ),
         );
     }
