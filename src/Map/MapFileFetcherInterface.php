@@ -6,6 +6,7 @@ interface MapFileFetcherInterface
 {
     /**
      * @param $namespace
+     *
      * @return mixed
      */
     public function fetch($namespace);

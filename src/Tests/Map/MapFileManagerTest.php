@@ -3,7 +3,6 @@
 namespace Majora\RestClient\Tests\Map;
 
 use Majora\RestClient\Map\MapFileManager;
-use Majora\RestClient\Map\YamlMapFileFetcher;
 use Majora\RestClient\Tests\Mock\MockMapFileBuilder;
 
 class MapFileManagerTest extends \PHPUnit_Framework_TestCase
@@ -14,7 +13,7 @@ class MapFileManagerTest extends \PHPUnit_Framework_TestCase
     private $mapFileManager;
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function setUp()
     {
@@ -24,7 +23,7 @@ class MapFileManagerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test load method
+     * test load method.
      */
     public function testLoad()
     {
@@ -38,20 +37,55 @@ class MapFileManagerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test getMap
+     * test getRouteName method.
+     *
+     *@dataProvider routeProvider
      */
-    public function testGetMapObjectBeforeLoad()
-    {
-        $this->assertNull($this->mapFileManager->getMap());
-    }
-
-    public function testGetMapObjectAfterLoad()
+    public function testGetRouteName($method, $routeName)
     {
         $this->mapFileManager->load('My\Namespace\Object\Path');
+        $response = $this->mapFileManager->getRouteName($method);
 
-        $this->assertSame(
-            MockMapFileBuilder::initMapFile()['My\Namespace\Object\Path'],
-            $this->mapFileManager->getMap()
+        if ($routeName === 'my_object_cget') {
+            $this->assertNotSame($routeName, $response);
+
+            return;
+        }
+
+        $this->assertSame($routeName, $response);
+    }
+
+    /**
+     * test routeExist method.
+     *
+     * @dataProvider routeProvider
+     */
+    public function testRouteExist($method, $routeName)
+    {
+        $this->mapFileManager->load('My\Namespace\Object\Path');
+        $this->assertTrue($this->mapFileManager->routeExist($method, $routeName));
+    }
+
+    /**
+     * test routeExist method with false route.
+     */
+    public function testRouteExistFailureRouteNameNotExist()
+    {
+        $this->mapFileManager->load('My\Namespace\Object\Path');
+        $this->assertFalse($this->mapFileManager->routeExist('GET', 'my_false_route'));
+    }
+
+    /**
+     * provider for testGetRouteName.
+     *
+     * @return array
+     */
+    public function routeProvider()
+    {
+        return array(
+            array('get', 'my_object_get'),
+            array('get', 'my_object_cget'),
+            array('post', 'my_object_post'),
         );
     }
 

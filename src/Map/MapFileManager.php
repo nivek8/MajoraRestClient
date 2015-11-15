@@ -16,6 +16,7 @@ class MapFileManager
 
     /**
      * MapFileManager constructor.
+     *
      * @param MapFileFetcherInterface $mapFileFetcher
      */
     public function __construct(MapFileFetcherInterface $mapFileFetcher)
@@ -32,10 +33,29 @@ class MapFileManager
     }
 
     /**
-     * @return array
+     * @param $method
+     *
+     * @return mixed
      */
-    public function getMap()
+    public function getRouteName($method)
     {
-        return $this->map;
+        $routeName = $this->map[strtoupper($method)];
+
+        if (is_array($routeName)) {
+            return $routeName[0];
+        }
+
+        return $routeName;
+    }
+
+    public function routeExist($method, $routeName)
+    {
+        $mapMethod = $this->map[strtoupper($method)];
+
+        if (is_array($mapMethod)) {
+            return in_array($routeName, $mapMethod);
+        }
+
+        return $mapMethod === $routeName;
     }
 }

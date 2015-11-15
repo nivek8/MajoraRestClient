@@ -20,7 +20,7 @@ class YamlMapFileFetcher implements MapFileFetcherInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function fetch($namespace)
     {

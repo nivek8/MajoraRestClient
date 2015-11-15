@@ -13,7 +13,7 @@ class YamlMapFileFetcherTest extends \PHPUnit_Framework_TestCase
     private $yamlMapFileFetcher;
 
     /**
-     * @inheritDocx
+     * {@inheritdoc}x
      */
     public function setUp()
     {
@@ -22,7 +22,7 @@ class YamlMapFileFetcherTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test fetch method
+     * test fetch method.
      */
     public function testFetch()
     {

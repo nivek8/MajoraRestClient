@@ -16,6 +16,7 @@ class MapFileBuilder
         }
 
         fopen($file, 'w+');
+
         return true;
     }
 }

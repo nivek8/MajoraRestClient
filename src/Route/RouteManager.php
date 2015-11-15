@@ -2,8 +2,10 @@
 
 namespace Majora\RestClient\Route;
 
-use Majora\RestClient\Route\RouteCollectionBuilder;
-use Majora\RestClient\Route\RouteConfigFetcherInterface;
+use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\Routing\RequestContext;
+use Majora\RestClient\Exceptions\InvalidRouteCollectionException;
+use Majora\RestClient\Exceptions\InvalidRouteUrlParametersException;
 
 class RouteManager
 {
@@ -23,8 +25,14 @@ class RouteManager
     private $routeCollection;
 
     /**
+     * @var UrlGenerator
+     */
+    private $urlGenerator;
+
+    /**
      * RouteManager constructor.
-     * @param \Majora\RestClient\Route\RouteCollectionBuilder $routeCollectionBuilder
+     *
+     * @param \Majora\RestClient\Route\RouteCollectionBuilder      $routeCollectionBuilder
      * @param \Majora\RestClient\Route\RouteConfigFetcherInterface $routeConfigFetcher
      */
     public function __construct(
@@ -36,20 +44,35 @@ class RouteManager
     }
 
     /**
-     * load routeCollection from url
+     * load routeCollection from url.
+     *
      * @param string $url
      */
     public function load($url)
     {
         $routeConfig = $this->routeConfigFetcher->fetch($url);
         $this->routeCollection = $this->routeCollectionBuilder->build($routeConfig);
+        $this->urlGenerator = new UrlGenerator($this->routeCollection, new RequestContext());
     }
 
     /**
-     * get RouteCollection
+     * generate url.
+     *
+     * @param string $routeName
+     * @param array  $routeParameters
+     *
+     * @return string
      */
-    public function getRouteCollection()
+    public function generateUrl($routeName, $routeParameters = array())
     {
-        return $this->routeCollection;
+        if (null === $this->routeCollection) {
+            throw new InvalidRouteCollectionException();
+        }
+
+        if (!is_array($routeParameters)) {
+            throw new InvalidRouteUrlParametersException();
+        }
+
+        return $this->urlGenerator->generate($routeName, $routeParameters, true);
     }
 }

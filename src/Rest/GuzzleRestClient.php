@@ -4,7 +4,7 @@ namespace Majora\RestClient\Rest;
 
 use GuzzleHttp\ClientInterface;
 
-class GuzzleRestClient
+class GuzzleRestClient implements RestClientInterface
 {
     /**
      * @var ClientInterface
@@ -14,7 +14,7 @@ class GuzzleRestClient
     /**
      * @param ClientInterface $guzzleClient
      */
-    public function construct(ClientInterface $guzzleClient)
+    public function __construct(ClientInterface $guzzleClient)
     {
         $this->guzzleClient = $guzzleClient;
     }
@@ -22,27 +22,24 @@ class GuzzleRestClient
     /**
      * @param string $method
      * @param string $routeName
-     * @param array  $parameters
      *
      * @return json
      */
-    public function request($method, $routeName, $parameters = array())
+    public function request($method, $url)
     {
-        if (null === $this->routeCollection) {
-            throw new InvalidClientRouteCollectionException();
-        }
-
-        $urlGenerator = new UrlGenerator($this->routeCollection, new RequestContext());
-        $url = $urlGenerator->generate($routeName, $parameters, true);
-
-        $route = $this->routeCollection->get($routeName);
-
-        if (!in_array($method, $route->getMethods())) {
-            throw new InvalidMethodRequestException();
-        }
-
         $response = $this->guzzleClient->request($method, $url)->getBody()->getContents();
 
         return $response;
+    }
+
+    /**
+     * @param $method
+     * @param $url
+     *
+     * @return json
+     */
+    public function asyncRequest($method, $url)
+    {
+        return $this->guzzleClient->requestAsync($method, $url)->getBody()->getContents();
     }
 }

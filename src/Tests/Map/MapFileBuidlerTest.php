@@ -4,7 +4,7 @@ namespace Majora\RestClient\Tests\Map;
 
 use Majora\RestClient\Map\MapFileBuilder;
 
-class MapFileBuilderTest extends \PHPUnit_Framework_TestCase
+class MapFileBuidlerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var MapFileBuilder
@@ -17,7 +17,7 @@ class MapFileBuilderTest extends \PHPUnit_Framework_TestCase
     private $filePath;
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function setUp()
     {
@@ -31,7 +31,7 @@ class MapFileBuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test generate method
+     * test generate method.
      */
     public function testGenerate()
     {
@@ -42,7 +42,7 @@ class MapFileBuilderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test generate method when file exist
+     * test generate method when file exist.
      */
     public function testGenerateWhenFileExist()
     {
