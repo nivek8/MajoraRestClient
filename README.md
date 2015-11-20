@@ -1,13 +1,31 @@
 # MajoraRestClient
 
-Todo:
-    l'app appel une classe hydrate avec le nom de la route api.
-    On utilise un mapping en cache pour matcher le nom de la route avec notre class d'app.
-    On effectue l'appel a l'api
-    on hydrate l'objet et on le retourne
+## Description
 
-    A faire:
-        - gerer le mappingApiRouting routing dans le cache, effectuer le systeme section
-        - creer class hydrate. Gerer les differentes methodes GET,PUT,POST,DELETE ...
-        - gerer le matching de la class hydrate
-        - creer commande d auto completion du mapping
+comming soon
+
+## TODO
+    - ROUTE
+        - fetcher guzzle (via url) :
+            - prendre en compte l'appel d'un xml
+            - prendre en compte l'appel d'un html
+        - fetcher via file :
+            - prendre en compte yaml
+            - prendre en compte xml
+            - prendre en compte html
+        - RouteConfigBuilder :
+          - convertir une url traditionnelle en schema RouteConfig
+        - Definir le schema routeConfig
+
+    - MAP
+        - MapFileBuilder:
+            - gérer l'ajout d'une route en yml et xml
+            - gérer l'update d'une route en yml et xml
+            - gérer la suppression d'une route en yml et xml
+        - Créer le XmlMapFileFetcher
+        - Créer une commande pour générer les routes
+        - Ajouter le schema d'un objet dans le mapping
+
+    - REST
+        - gérer l'hydratation de l'objet lors de la réception de données
+        - gérer chaque cas de figure
