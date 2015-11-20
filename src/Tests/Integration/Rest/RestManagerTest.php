@@ -2,7 +2,6 @@
 
 namespace Majora\RestClient\Tests\Integration\Rest;
 
-use GuzzleHttp\Client;
 use Majora\RestClient\Map\MapFileManager;
 use Majora\RestClient\Map\YamlMapFileFetcher;
 use Majora\RestClient\Rest\GuzzleRestClient;
@@ -43,7 +42,8 @@ class RestManagerTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function testGet() {
+    public function testGet()
+    {
         $response = $this->restManager
             ->call('Majora\RestClient\Mock\Model\Sir\Partner')
             ->get(array('id' => 1));

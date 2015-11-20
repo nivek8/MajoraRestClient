@@ -33,7 +33,7 @@ class YamlMapFileFetcherTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test fetch method failure where namespace not exist
+     * test fetch method failure where namespace not exist.
      */
     public function testFetchFailureNamespaceNotExist()
     {

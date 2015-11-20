@@ -42,7 +42,7 @@ class MapFileBuidlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test generate with filepath
+     * test generate with filepath.
      */
     public function testGenerateWithFilePath()
     {

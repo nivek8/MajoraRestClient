@@ -25,7 +25,6 @@ class GuzzleRestClient implements RestClientInterface
      *
      * @return string
      */
-
     public function request($method, $url)
     {
         return $this->guzzleClient->request($method, $url)->getBody()->getContents();
