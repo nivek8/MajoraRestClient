@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\RestClient\Tests\Map;
+namespace Majora\RestClient\Tests\Unit\Map;
 
 use Majora\RestClient\Map\MapFileBuilder;
 
@@ -22,7 +22,7 @@ class MapFileBuidlerTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->mapFileBuilder = new MapFileBuilder();
-        $this->filePath = sprintf('%s%sRestClientMapping.yml', dirname(dirname(__DIR__)), DIRECTORY_SEPARATOR);
+        $this->filePath = sprintf('%s%sRestClientMapping.yml', dirname(dirname(dirname(__DIR__))), DIRECTORY_SEPARATOR);
     }
 
     public function tearDown()
@@ -36,6 +36,18 @@ class MapFileBuidlerTest extends \PHPUnit_Framework_TestCase
     public function testGenerate()
     {
         $response = $this->mapFileBuilder->generate();
+
+        $this->assertTrue(file_exists($this->filePath));
+        $this->assertTrue($response);
+    }
+
+    /**
+     * test generate with filepath
+     */
+    public function testGenerateWithFilePath()
+    {
+        $this->filePath = sprintf('%s%sFalsePath.yml', __DIR__, DIRECTORY_SEPARATOR);
+        $response = $this->mapFileBuilder->generate($this->filePath);
 
         $this->assertTrue(file_exists($this->filePath));
         $this->assertTrue($response);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\RestClient\Tests\Map;
+namespace Majora\RestClient\Tests\Unit\Map;
 
 use Majora\RestClient\Map\YamlMapFileFetcher;
 use Majora\RestClient\Tests\Mock\MockMapFileBuilder;
@@ -13,11 +13,11 @@ class YamlMapFileFetcherTest extends \PHPUnit_Framework_TestCase
     private $yamlMapFileFetcher;
 
     /**
-     * {@inheritdoc}x
+     * {@inheritdoc}
      */
     public function setUp()
     {
-        $file = __DIR__.'/../Mock/MockMapFileBuilder.yml';
+        $file = dirname(__DIR__).'/../Mock/MockMapFileBuilder.yml';
         $this->yamlMapFileFetcher = new YamlMapFileFetcher($file);
     }
 
@@ -32,6 +32,9 @@ class YamlMapFileFetcherTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(MockMapFileBuilder::initMapFile()[$namespace], $response);
     }
 
+    /**
+     * test fetch method failure where namespace not exist
+     */
     public function testFetchFailureNamespaceNotExist()
     {
         $namespace = 'My\Wrong\Nampesace';

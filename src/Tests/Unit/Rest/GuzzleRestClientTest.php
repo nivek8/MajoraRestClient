@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\RestClient\Tests\Rest;
+namespace Majora\RestClient\Tests\Unit\Rest;
 
 use Majora\RestClient\Rest\GuzzleRestClient;
 use Majora\RestClient\Tests\Mock\MockGuzzleClient;

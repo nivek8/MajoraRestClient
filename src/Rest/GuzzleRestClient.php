@@ -21,22 +21,21 @@ class GuzzleRestClient implements RestClientInterface
 
     /**
      * @param string $method
-     * @param string $routeName
+     * @param string $url
      *
-     * @return json
+     * @return string
      */
+
     public function request($method, $url)
     {
-        $response = $this->guzzleClient->request($method, $url)->getBody()->getContents();
-
-        return $response;
+        return $this->guzzleClient->request($method, $url)->getBody()->getContents();
     }
 
     /**
      * @param $method
      * @param $url
      *
-     * @return json
+     * @return string
      */
     public function asyncRequest($method, $url)
     {

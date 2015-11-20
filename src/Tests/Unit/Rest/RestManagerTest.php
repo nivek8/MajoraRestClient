@@ -1,28 +1,28 @@
 <?php
 
-namespace Majora\RestClient\Tests\Rest;
+namespace Majora\RestClient\Tests\Unit\Rest;
 
 use Majora\RestClient\Rest\RestManager;
 
 class RestManagerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var RestManager
+     * @var \PHPUnit_Framework_MockObject_MockObject restManager
      */
     private $restManager;
 
     /**
-     * @var RouteManager
+     * @var \PHPUnit_Framework_MockObject_MockObject routeManager
      */
     private $mockRouteManager;
 
     /**
-     * @var MapFileManager
+     * @var \PHPUnit_Framework_MockObject_MockObject mapFileManager
      */
     private $mockMapFileManager;
 
     /**
-     * @var RestClientInterface
+     * @var \PHPUnit_Framework_MockObject_MockObject restClientInterface
      */
     private $mockRestClient;
 

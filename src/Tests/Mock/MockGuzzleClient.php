@@ -52,8 +52,7 @@ abstract class MockGuzzleClient
      */
     public static function initGuzzleRestResponse()
     {
-        $handle = fopen('php://temp', 'w+');
-        fwrite($handle, json_encode(self::initConfig()));
+        $handle = fopen(__DIR__.DIRECTORY_SEPARATOR.'MockJsRouting.json', 'r');
         rewind($handle);
 
         $stream = new Stream($handle);

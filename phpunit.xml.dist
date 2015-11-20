@@ -12,8 +12,19 @@
         colors                      = "true">
 
     <testsuites>
+        <!-- test all phpunit test (unit, integration, fonctionel) -->
         <testsuite name="MajoraRestClient_Test_Suite">
             <directory>./src/Tests</directory>
+        </testsuite>
+
+        <!-- test unit test only -->
+        <testsuite name="MajoraRestClient_Unit_Test_Suite">
+            <directory>./src/Tests/Unit</directory>
+        </testsuite>
+
+        <!-- test integration test only -->
+        <testsuite name="MajoraRestClient_Integration_Test_Suite">
+            <directory>./src/Tests/Integration</directory>
         </testsuite>
     </testsuites>
 

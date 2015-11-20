@@ -1,0 +1,49 @@
+Majora\RestClient\Mock\Model\Sir\Partner:
+  GET:
+    - api_rest_get_partner
+    - api_rest_cget_partner
+  POST: api_rest_post_partner
+  PUT: api_rest_put_partner
+  DELETE: api_rest_delete_partner
+Majora\RestClient\Mock\Model\Sir\Network:
+  GET:
+    - api_rest_get_network
+    - api_rest_cget_network
+  POST: api_rest_post_network
+  PUT: api_rest_put_network
+  DELETE: api_rest_delete_network
+Majora\RestClient\Mock\Model\Sir\PartnerDiploma:
+    GET:
+      - api_rest_get_partner_diploma
+      - api_rest_cget_partner_diploma
+    POST: api_rest_post_partner_diploma
+    PUT: api_rest_put_partner_diploma
+    DELETE: api_rest_delete_partne_diploma
+Majora\RestClient\Mock\Model\Sir\Job:
+  GET:
+   - api_rest_get_job
+   - api_rest_cget_job
+  POST: api_rest_post_job
+  PUT: api_rest_put_job
+  DELETE: api_rest_delete_job
+Majora\RestClient\Mock\Sir\Diploma:
+  GET:
+    - api_rest_get_diploma
+    - api_rest_cget_diploma
+  POST: api_rest_post_diploma
+  PUT: api_rest_put_diploma
+  DELETE: api_rest_delete_diploma
+Majora\RestClient\Mock\Model\Sir\School:
+  GET:
+    - api_rest_get_school
+    - api_rest_cget_school
+  POST: api_rest_post_school
+  PUT: api_rest_put_school
+  DELETE: api_rest_delete_school
+Majora\RestClient\Mock\Model\Sir\Platform:
+  GET:
+    - api_rest_get_platform
+    - api_rest_cget_platform
+  POST: api_rest_post_platform
+  PUT: api_rest_put_platform
+  DELETE: api_rest_delete_platform

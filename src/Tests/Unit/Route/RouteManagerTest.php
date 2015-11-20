@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\RestClient\Tests\Route;
+namespace Majora\RestClient\Tests\Unit\Route;
 
 use Majora\RestClient\Route\RouteManager;
 use Majora\RestClient\Tests\Mock\MockRouteCollection;

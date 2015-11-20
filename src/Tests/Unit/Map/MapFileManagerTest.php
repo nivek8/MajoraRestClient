@@ -1,6 +1,6 @@
 <?php
 
-namespace Majora\RestClient\Tests\Map;
+namespace Majora\RestClient\Tests\Unit\Map;
 
 use Majora\RestClient\Map\MapFileManager;
 use Majora\RestClient\Tests\Mock\MockMapFileBuilder;

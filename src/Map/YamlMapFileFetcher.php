@@ -12,11 +12,13 @@ class YamlMapFileFetcher implements MapFileFetcherInterface
     private $filePath;
 
     /**
-     * @param MapFileBuilder $mapFileBuilder
+     * @param string $filePath
      */
-    public function __construct($filePath)
+    public function __construct($filePath = null)
     {
-        $this->filePath = $filePath;
+        $this->filePath = (null !== $filePath) ?
+            $filePath :
+            sprintf('%s%sRestClientMapping.yml', dirname(__DIR__), DIRECTORY_SEPARATOR);
     }
 
     /**
