@@ -84,7 +84,7 @@ class RestManager
     public function post($routeParameters = null, $routeName = null)
     {
         return $this->restClient->request(
-            self::GET_METHOD,
+            self::POST_METHOD,
             $this->generateUrl($routeParameters, $routeName)
         );
     }

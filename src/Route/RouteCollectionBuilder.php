@@ -6,7 +6,7 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
- * convert routeConfig
+ * convert routeConfig.
  */
 class RouteCollectionBuilder
 {

@@ -45,7 +45,7 @@ class RestManagerTest extends \PHPUnit_Framework_TestCase
     public function testGet()
     {
         $response = $this->restManager
-            ->call('Majora\RestClient\Mock\Model\Sir\Partner')
+            ->call('Majora\RestClient\Tests\Mock\Model\Sir\Partner')
             ->get(array('id' => 1));
 
         $this->assertSame($response, MockApiResponse::GET_RESPONSE);
